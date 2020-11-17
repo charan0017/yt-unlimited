@@ -41,7 +41,7 @@ If you have problems with youtube login like for ex. "This browser is not secure
 
 ## IMPORTANT
 
-Do not share youtube_cookies.json file with anybody or do not add it to any git repo. This is your youtube account credentials for authentication. 
+Do not share **youtube_cookies.json** file with anybody or do not add it to any git repo. This is your youtube account credentials for authentication. 
 
 ## Usage
 
@@ -129,7 +129,7 @@ npm install
 
 ### Run
 
-Before uploading video you have to be authenticated youtube user. Please check First Run section for more details. If you are running this script on remote server via SSH it will throw an error trying to open browser. Solution is to run this script first on your local machine (where browser can be opened and you can log in) to obtain youtube_cookies.json file and then copy that file to your remote server.
+Before uploading video you have to be authenticated youtube user. Please check [First Run](https://github.com/schriker/yt-unlimited#first-run) section for more details. If you are running this script on remote server via SSH it will throw an error trying to open browser. Solution is to run this script first on your local machine (where browser can be opened and you can log in) to obtain youtube_cookies.json file and then copy that file to your remote server.
 
 ```bash
 node dist/index.js video.mp4
