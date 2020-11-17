@@ -1,4 +1,4 @@
 node_modules/
-*cookies.json
+*cookies*.json
 *.mp4
 *.mov
