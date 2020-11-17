@@ -35,7 +35,8 @@ const YTUnlimited = (video: string, config?: ConfigType) => {
       if (!video) {
         throw new Error('Please provide video path.');
       }
-      const isCLI = require.main !== module;
+      const isCLI = !!process.argv.slice(2)[0];
+
       const VIDEO_PATH = `${process.cwd()}/${video}`;
       const cookiesFilePath = path.join(process.cwd(), YT.COOKIES);
       const cookiesFileExists = fs.existsSync(cookiesFilePath);
@@ -82,7 +83,7 @@ const YTUnlimited = (video: string, config?: ConfigType) => {
         );
         await videoField.sendKeys(VIDEO_PATH);
         await driver.wait(until.elementLocated(By.id(YT.TEXTBOX)));
-        isCLI ? console.log(`File: ${video}`) : null;
+        isCLI ? console.log(`Loaded file: ${video}`) : null;
         const [titleField, descriptionField] = await driver.findElements(
           By.id(YT.TEXTBOX)
         );
@@ -118,7 +119,7 @@ const YTUnlimited = (video: string, config?: ConfigType) => {
           await driver.findElement(By.name(config.VIDEO_VISIBILITY!))
         ).click();
         isCLI ? console.log('Video details filled.') : null;
-        isCLI ? console.log('Uploading.') : null;
+        isCLI ? console.log('Uploading...') : null;
         await driver.wait(until.elementLocated(By.id(YT.UPLOAD_STATUS)));
         const videoURL = await (
           await driver.findElement(By.css(YT.VIDEO_URL))

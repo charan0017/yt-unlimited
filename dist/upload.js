@@ -55,7 +55,7 @@ const YTUnlimited = (video, config) => {
             if (!video) {
                 throw new Error('Please provide video path.');
             }
-            const isCLI = require.main !== module;
+            const isCLI = !!process.argv.slice(2)[0];
             const VIDEO_PATH = `${process.cwd()}/${video}`;
             const cookiesFilePath = path_1.default.join(process.cwd(), consts_1.YT.COOKIES);
             const cookiesFileExists = fs_1.default.existsSync(cookiesFilePath);
@@ -102,7 +102,7 @@ const YTUnlimited = (video, config) => {
                 const videoField = yield driver.findElement(selenium_webdriver_1.By.xpath(consts_1.YT.INPUT_FILE_VIDEO));
                 yield videoField.sendKeys(VIDEO_PATH);
                 yield driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(consts_1.YT.TEXTBOX)));
-                isCLI ? console.log(`File: ${video}`) : null;
+                isCLI ? console.log(`Loaded file: ${video}`) : null;
                 const [titleField, descriptionField] = yield driver.findElements(selenium_webdriver_1.By.id(consts_1.YT.TEXTBOX));
                 yield fieldInput(titleField, config.VIDEO_TITLE || DEFAULT_VIDEO_CONFIG.VIDEO_TITLE);
                 yield fieldInput(descriptionField, config.VIDEO_DESCRIPTION || DEFAULT_VIDEO_CONFIG.VIDEO_DESCRIPTION);
@@ -118,7 +118,7 @@ const YTUnlimited = (video, config) => {
                 yield (yield driver.findElement(selenium_webdriver_1.By.id(consts_1.YT.NEXT_BUTTON))).click();
                 yield (yield driver.findElement(selenium_webdriver_1.By.name(config.VIDEO_VISIBILITY))).click();
                 isCLI ? console.log('Video details filled.') : null;
-                isCLI ? console.log('Uploading.') : null;
+                isCLI ? console.log('Uploading...') : null;
                 yield driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(consts_1.YT.UPLOAD_STATUS)));
                 const videoURL = yield (yield driver.findElement(selenium_webdriver_1.By.css(consts_1.YT.VIDEO_URL))).getText();
                 const videoId = videoURL.split(consts_1.YT.VIDEO_ID_PREFIX).pop();
