@@ -4,7 +4,7 @@ export const YT = {
   STACKOVERFLOW: 'https://stackoverflow.com',
   UPLOAD_URL: 'https://www.youtube.com/upload',
   LOGIN_URL: 'action_handle_signin',
-  INPUT_FILE_VIDEO: "//input[@type='file']",
+  INPUT_FILE_VIDEO: 'input[type="file"]',
   TEXTBOX: 'textbox',
   NEXT_BUTTON: 'next-button',
   UPLOAD_STATUS: 'processing-badge',

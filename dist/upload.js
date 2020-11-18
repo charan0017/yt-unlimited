@@ -99,7 +99,7 @@ const YTUnlimited = (video, config) => {
                     throw new Error(`User not authenticated. Please check your cookies file or try to get new one.`);
                 }
                 isCLI ? console.log('Added cookies.') : null;
-                const videoField = yield driver.findElement(selenium_webdriver_1.By.xpath(consts_1.YT.INPUT_FILE_VIDEO));
+                const videoField = yield driver.findElement(selenium_webdriver_1.By.css(consts_1.YT.INPUT_FILE_VIDEO));
                 yield videoField.sendKeys(VIDEO_PATH);
                 yield driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(consts_1.YT.TEXTBOX)));
                 isCLI ? console.log(`Loaded file: ${video}`) : null;

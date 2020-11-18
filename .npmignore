@@ -1,2 +1,7 @@
 src/
 assets/
+*cookies*.json
+*.mp4
+*.mov
+Dockerfile
+docker-compose.yaml

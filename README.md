@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/schriker/yt-unlimited/blob/master/assets/icon.svg"/>
+  <img src="https://janusmarcin.pl/icon.svg"/>
 </p>
 
 # Youtube Unlimited
@@ -133,4 +133,19 @@ Before uploading video you have to be authenticated youtube user. Please check [
 
 ```bash
 node dist/index.js video.mp4
+```
+
+## Docker
+You can mount your cookies and video file in docker-compose.yaml:
+
+```yaml
+    volumes: 
+      - ./video.mp4:/home/app/video.mp4
+      - ./youtube_cookies.json:/home/app/youtube_cookies.json
+```
+
+And run to start conatiner and upload video:
+
+```bash
+docker-compose up
 ```

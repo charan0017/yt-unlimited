@@ -36,7 +36,6 @@ const YTUnlimited = (video: string, config?: ConfigType) => {
         throw new Error('Please provide video path.');
       }
       const isCLI = !!process.argv.slice(2)[0];
-
       const VIDEO_PATH = `${process.cwd()}/${video}`;
       const cookiesFilePath = path.join(process.cwd(), YT.COOKIES);
       const cookiesFileExists = fs.existsSync(cookiesFilePath);
@@ -52,7 +51,7 @@ const YTUnlimited = (video: string, config?: ConfigType) => {
 
       const options = new firefox.Options();
       if (cookiesFileExists) {
-        options.headless();
+        options.headless(); 
       }
 
       let driver = await new Builder()
@@ -78,9 +77,11 @@ const YTUnlimited = (video: string, config?: ConfigType) => {
           );
         }
         isCLI ? console.log('Added cookies.') : null;
+
         const videoField = await driver.findElement(
-          By.xpath(YT.INPUT_FILE_VIDEO)
+          By.css(YT.INPUT_FILE_VIDEO)
         );
+
         await videoField.sendKeys(VIDEO_PATH);
         await driver.wait(until.elementLocated(By.id(YT.TEXTBOX)));
         isCLI ? console.log(`Loaded file: ${video}`) : null;

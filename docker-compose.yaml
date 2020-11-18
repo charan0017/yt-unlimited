@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  upload:
+    build: .
+    volumes: 
+      - ./video.mp4:/home/app/video.mp4
+      - ./youtube_cookies.json:/home/app/youtube_cookies.json
+    command: node index.js video.mp4
