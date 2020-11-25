@@ -28,8 +28,8 @@ const waitForUserInput_1 = __importDefault(require("./helpers/waitForUserInput")
 const types_1 = require("./types/types");
 const video_metadata_json_1 = __importDefault(require("./video_metadata.json"));
 const DEFAULT_VIDEO_CONFIG = {
-    VIDEO_TITLE: 'Video Title',
-    VIDEO_DESCRIPTION: 'Video Description',
+    VIDEO_TITLE: '',
+    VIDEO_DESCRIPTION: '',
     VIDEO_VISIBILITY: 'PRIVATE',
     VIDEO_MADE_FOR_KIDS: false,
     VIDEO_CATEGORY: types_1.VideoCategoriesType.Film,
@@ -56,7 +56,7 @@ const YTUnlimited = (video, config) => {
                 throw new Error('Please provide video path.');
             }
             const isCLI = !!process.argv.slice(2)[0];
-            const VIDEO_PATH = `${process.cwd()}/${video}`;
+            const VIDEO_PATH = video;
             const cookiesFilePath = path_1.default.join(process.cwd(), consts_1.YT.COOKIES);
             const cookiesFileExists = fs_1.default.existsSync(cookiesFilePath);
             if (isCLI) {
